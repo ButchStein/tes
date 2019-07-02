@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import {Observable} from 'rxjs';
 
@@ -12,8 +12,10 @@ export class UsersService {
   }
 
 
-  getData(): Observable<object> {
-    return this.httpClient.get<object>('http://demo.dsml.ru');
+  getData() {
+    const headers = new HttpHeaders({authorization: `Basic ${btoa('${this.name}:${this.password}')}`});
+    const options = { headers: headers };
+    return this.httpClient.get('http://demo.dsml.ru', options);
   }
 
 }
