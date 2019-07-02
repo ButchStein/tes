@@ -13,7 +13,7 @@ export class UsersService {
 
 
   getData() {
-    const headers = new HttpHeaders({authorization: `Basic ${btoa('${this.name}:${this.password}')}`});
+    const headers = new HttpHeaders({authorization: `Basic ${btoa('admin:password')}`});
     const options = { headers: headers };
     return this.httpClient.get('http://demo.dsml.ru', options);
   }
